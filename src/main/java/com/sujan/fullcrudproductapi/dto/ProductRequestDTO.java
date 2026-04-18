@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public record ProductRequestDTO(
 
         @NotBlank(message = "Name is Required")
-        @Size(max=20, message = "Enter full name")
+        @Size(max=100, message = "Name cannot exceed 100 characters")
         String name,
 
         @NotNull(message = "Price is required")

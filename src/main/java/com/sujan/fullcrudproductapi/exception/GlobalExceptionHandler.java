@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {
         return ResponseEntity.status(404).body(
-                new ErrorResponse(404, ex.getMessage(), null, LocalDateTime.now())
+                new ErrorResponse(404, ex.getMessage(), Map.of(), LocalDateTime.now())
         );
     }
 
