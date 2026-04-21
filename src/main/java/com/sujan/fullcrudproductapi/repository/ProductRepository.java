@@ -20,8 +20,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     // JPQL: search by name keyword + price range
     @Query("SELECT p FROM Product p WHERE "+
             "LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%'))"+
-            "AND (:minPrice IS NULL OR p.price >= :minPrice)" +
-            "AND (:maxPrice IS NULL OR p.price <= :maxPrice)"
+            "AND (: minPrice IS NULL OR p.price >= :minPrice)" +
+            "AND (: maxPrice IS NULL OR p.price <= :maxPrice)")
     Page<Product> searchProducts(@Param("keyword") String keyword,
                                  @Param("minPrice")BigDecimal minPrice,
                                  @Param("maxPrice") BigDecimal maxPrice,
