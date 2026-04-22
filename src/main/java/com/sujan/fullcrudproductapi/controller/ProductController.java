@@ -54,14 +54,14 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN') or hasAuthority('product:write')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ProductResponseDTO update(@PathVariable Integer id,
                                      @Valid @RequestBody ProductRequestDTO dto) {
         return productService.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN') or #username == authentication.name")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         productService.delete(id);
         return ResponseEntity.noContent().build();
